@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Write your public key here..."
+        android:text=""
         android:visibility="gone"
         android:inputType="textMultiLine"
         android:isScrollContainer="true"

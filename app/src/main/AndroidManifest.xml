@@ -21,9 +21,11 @@
         </provider>
         <activity android:name=".stego.StegoActivity"
             android:parentActivityName=".encrypt.EncryptActivity"></activity>
+
         <activity
             android:name=".decrypt.DecryptResultActivity"
-            android:parentActivityName=".decrypt.DecryptActivity" />
+            android:parentActivityName=".decrypt.DecryptActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
         <activity
             android:name=".decrypt.DecryptActivity"

@@ -17,4 +17,5 @@
     <string name="cover_image_empty">Please, select cover image</string>
     <string name="image_is_saved">Stego Image is already saved on device</string>
     <string name="save_image_success">Stego Image was successfully saved !</string>
+    <string name="public_key_not_available">Please Enter Public Key</string>
 </resources>

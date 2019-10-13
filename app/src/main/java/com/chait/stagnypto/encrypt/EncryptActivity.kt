@@ -33,6 +33,7 @@ import java.io.File
 class EncryptActivity : AppCompatActivity(), EncryptView {
 
     private var secretMessageType = Constants.TYPE_TEXT
+    private var encryptionType = 0
     private lateinit var progressDialog: ProgressDialog
     private lateinit var mPresenter: EncryptPresenter
     private var whichImage = -1
@@ -49,10 +50,14 @@ class EncryptActivity : AppCompatActivity(), EncryptView {
                 encryptRSA.visibility = View.GONE
                 publicKey.visibility = View.GONE
                 encryptAES.visibility = View.VISIBLE
+                encryptionType = 0
+                Constants.encryptionAlgorithm = 0
             } else if (rbRSA.isChecked) {
                 encryptRSA.visibility = View.VISIBLE
                 publicKey.visibility = View.VISIBLE
                 encryptAES.visibility = View.GONE
+                encryptionType = 1
+                Constants.encryptionAlgorithm = 1
             }
         }
         stegoImage.setOnClickListener {
@@ -107,8 +112,12 @@ class EncryptActivity : AppCompatActivity(), EncryptView {
 
         encryptRSA.setOnClickListener {
             val text = getSecretMessage()
-            if (text.isNotEmpty()) {
+            val secretKey = publicKey.text.toString()
+            if (text.isNotEmpty() && secretKey!="") {
+                Constants.publicKeyRSA = secretKey
                 mPresenter.encryptText()
+            } else if(secretKey==""){
+                showToast(R.string.public_key_not_available)
             } else {
                 showToast(R.string.secret_text_empty)
             }

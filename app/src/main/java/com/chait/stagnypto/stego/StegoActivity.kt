@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.activity_stego.*
 import java.io.File
 import com.chait.stagnypto.BuildConfig
 import android.support.v4.content.FileProvider
-
+import android.view.View
+import android.widget.Toast
+import android.content.Context
+import android.text.ClipboardManager
 
 
 class StegoActivity : AppCompatActivity(),StegoView {
@@ -28,6 +31,11 @@ class StegoActivity : AppCompatActivity(),StegoView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stego)
         initToolbar()
+        if(Constants.encryptionAlgorithm==0){
+            aesTV.visibility = View.VISIBLE
+            aesSecretKey.visibility = View.VISIBLE
+            aesSecretKey.text = Constants.sharedKeyAES
+        }
         mPresenter = StegoPresenterImpl(this)
         progressDialog = ProgressDialog(this@StegoActivity)
         progressDialog.setMessage("Please wait...")
@@ -46,6 +54,11 @@ class StegoActivity : AppCompatActivity(),StegoView {
         }
         share.setOnClickListener {
             shareStegoImage(stegoImagePath)
+        }
+        aesSecretKey.setOnClickListener {
+            val cm = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            cm.text = aesSecretKey.text
+            Toast.makeText(this, "Secret Key Copied to clipboard", Toast.LENGTH_SHORT).show()
         }
     }
 

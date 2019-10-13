@@ -8,6 +8,11 @@ public class Constants {
     public static final int PERMISSIONS_CAMERA = 0;
     public static final int PERMISSIONS_EXTERNAL_STORAGE = 1;
 
+    //Encryption Algorithm
+    public static int encryptionAlgorithm = 0;
+    public static String sharedKeyAES = "";
+    public static String publicKeyRSA = "";
+
     // Request Codes
     public static final int REQUEST_CAMERA = 0;
     public static final int SELECT_FILE = 1;
@@ -17,7 +22,7 @@ public class Constants {
     public static final int SECRET_IMAGE = 1;
 
     //SharedPreferences
-    public static final String SHARED_PREF_NAME = "cryptomessenger_spref";
+    public static final String SHARED_PREF_NAME = "Stagnypto_spref";
     public static final String PREF_COVER_PATH = "cover_image_pref";
     public static final String PREF_COVER_IS_SET = "cover_is_set_pref";
 
